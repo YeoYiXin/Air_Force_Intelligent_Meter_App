@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "229566054768",
+    "project_id": "air-force-meter-app",
+    "storage_bucket": "air-force-meter-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:229566054768:android:ffd4bb5067192d1c4f8fb5",
+        "android_client_info": {
+          "package_name": "com.example.intelligent_meter_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCmC67j0SilESX5NYcw8ocqubUXA-y87Q8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

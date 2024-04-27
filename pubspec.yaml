@@ -10,10 +10,23 @@ environment:
   sdk: '>=3.3.0 <4.0.0'
 
 dependencies:
+  camera: ^0.10.5+9
+  cloud_firestore: ^4.15.10
+  external_path: ^1.0.3
+  firebase_core: ^2.27.2
+  fl_chart: ^0.67.0
   flutter:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
+  gap: ^3.0.1
+  geolocator: ^11.0.0
+  google_fonts: ^6.2.0
+  image_picker: ^1.1.0
+  media_scanner: ^2.1.0
+  syncfusion_flutter_charts: ^25.1.41+2
+  syncfusion_flutter_gauges: ^25.1.41
+  timeline_tile: ^2.0.0
 
 dev_dependencies:
   flutter_test:
@@ -30,3 +43,4 @@ flutter:
   assets:
     # Add assets from the images directory to the application.
     - assets/images/
+    - assets/icons/
