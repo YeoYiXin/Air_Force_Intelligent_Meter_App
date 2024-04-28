@@ -17,7 +17,7 @@ class _ResultState extends State<Result> {
     return Center(
       child: Container(
         width: MediaQuery.of(context).size.width * 0.9,
-        height: MediaQuery.of(context).size.height * 0.17,
+        height: MediaQuery.of(context).size.height * 0.15,
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(5),
@@ -67,7 +67,7 @@ class _ResultState extends State<Result> {
                   ),
                   Gap(30),
                   Padding(
-                      padding: const EdgeInsets.only(right: 0, top: 10),
+                      padding: const EdgeInsets.only(right: 0, top: 5),
                       child: Row(
                         children: [
                           Text("Add logs",
@@ -114,7 +114,7 @@ class _ResultState extends State<Result> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Padding(
-                      padding: const EdgeInsets.only(right: 0, top: 5),
+                      padding: const EdgeInsets.only(right: 0, top: 0),
                       child: IconButton(
                         icon: Image.asset(
                           "assets/icons/Done.png",
