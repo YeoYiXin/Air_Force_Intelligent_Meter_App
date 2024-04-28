@@ -3,9 +3,13 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:gap/gap.dart';
 import 'package:intelligent_meter_app/src/pages/manager/analytics/dottedLine.dart';
 import 'package:intelligent_meter_app/src/pages/manager/analytics/dummy_data.dart';
+import 'package:intelligent_meter_app/src/pages/manager/analytics/forecast_line.dart';
 import 'package:intelligent_meter_app/src/pages/manager/analytics/horizontal_bar_chart.dart';
 import 'package:intelligent_meter_app/src/pages/manager/analytics/semicircle_gauge.dart';
 import 'package:intelligent_meter_app/src/pages/manager/navigation/bottom_nav.dart';
+import 'package:month_picker_dialog/month_picker_dialog.dart';
+import 'package:syncfusion_flutter_datepicker/datepicker.dart';
+import 'package:intl/intl.dart';
 
 class Analytics extends StatefulWidget {
   const Analytics({Key? key}) : super(key: key);
@@ -15,6 +19,17 @@ class Analytics extends StatefulWidget {
 }
 
 class _AnalyticsState extends State<Analytics> {
+  bool isPressed = false;
+  late OverlayEntry _overlayEntry;
+  late OverlayState _overlay;
+  int duration = 180;
+
+  @override
+  void initState() {
+    super.initState();
+    _overlay = Overlay.of(context);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,6 +41,60 @@ class _AnalyticsState extends State<Analytics> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              // prediction of meter forecast
+              Gap(10),
+              Container(
+                  width: MediaQuery.of(context).size.width,
+                  child: Row(
+                    children: [
+                      Gap(10),
+                      Text(
+                        "Meter Forecast Prediction",
+                        style: TextStyle(
+                          fontSize: 15,
+                          color: Color.fromRGBO(163, 176, 182, 1),
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  )),
+
+              Container(
+                  width: MediaQuery.of(context).size.width,
+                  child: Row(
+                    children: [
+                      Gap(10),
+                      Text(
+                        "Filter by: Month",
+                        style: TextStyle(
+                          fontSize: 15,
+                          color: Color.fromRGBO(163, 176, 182, 1),
+                        ),
+                      ),
+                      Gap(10),
+                      IconButton(
+                        icon: Image.asset("assets/icons/Funnel.png"),
+                        onPressed: () {
+                          setState(() {
+                            isPressed = !isPressed;
+                            if (isPressed) {
+                              _overlayEntry = _createOverlayEntry();
+                              _overlay.insert(_overlayEntry);
+                            } else {
+                              _overlayEntry.remove();
+                            }
+                          });
+                        },
+                      ),
+                    ],
+                  )),
+
+              // pick date - default show the 6 months - show data from next months to 6 months
+              MeterForecastPlot(
+                startDate: DateTime.now(),
+                endDate: DateTime.now().add(Duration(days: duration)),
+              ),
+
               // first line
               Container(
                 margin: EdgeInsets.only(left: 10, right: 10),
@@ -110,7 +179,7 @@ class _AnalyticsState extends State<Analytics> {
                             children: [
                               Container(
                                 margin: EdgeInsets.only(left: 10, top: 10),
-                                child: CircleAvatar(
+                                child: const CircleAvatar(
                                   radius: 5,
                                   backgroundColor:
                                       Color.fromRGBO(255, 137, 125, 1),
@@ -118,8 +187,9 @@ class _AnalyticsState extends State<Analytics> {
                               ),
                               Gap(30),
                               Container(
-                                margin: EdgeInsets.only(left: 10, top: 10),
-                                child: Text(
+                                margin:
+                                    const EdgeInsets.only(left: 10, top: 10),
+                                child: const Text(
                                   "Very Low Stock",
                                   style: TextStyle(
                                     fontSize: 15,
@@ -169,6 +239,69 @@ class _AnalyticsState extends State<Analytics> {
         ),
       ),
       bottomNavigationBar: BottomNav(),
+    );
+  }
+
+  OverlayEntry _createOverlayEntry() {
+    RenderObject? renderBox = context.findRenderObject();
+    // var size = renderBox?.size;
+
+    return OverlayEntry(
+      builder: (context) => Positioned(
+        width: 200,
+        child: Container(
+          alignment: Alignment.topCenter,
+          margin: EdgeInsets.only(top: 100),
+          child: Material(
+            elevation: 4.0,
+            child: Column(
+              children: [
+                SizedBox(height: 10),
+                Text(
+                  "Select Range",
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                SizedBox(height: 10),
+                ElevatedButton(
+                  onPressed: () {
+                     setState(() {
+                      duration = 90;
+                    });
+                  },
+                  child: Text("Three Months"),
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                     setState(() {
+                      duration = 180;
+                    });
+                  },
+                  child: Text("Six Months"),
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                     setState(() {
+                      duration = 365;
+                    });
+                  },
+                  child: Text("Twelve Months"),
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                     setState(() {
+                      duration = 450;
+                    });
+                  },
+                  child: Text("Fifteen Months"),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
     );
   }
 }

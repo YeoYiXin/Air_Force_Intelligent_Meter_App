@@ -23,8 +23,11 @@ dependencies:
   geolocator: ^11.0.0
   google_fonts: ^6.2.0
   image_picker: ^1.1.0
+  intl: ^0.18.1
   media_scanner: ^2.1.0
+  month_picker_dialog: ^2.11.2
   syncfusion_flutter_charts: ^25.1.41+2
+  syncfusion_flutter_datepicker: ^25.1.41
   syncfusion_flutter_gauges: ^25.1.41
   timeline_tile: ^2.0.0
 

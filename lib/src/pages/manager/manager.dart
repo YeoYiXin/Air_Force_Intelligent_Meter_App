@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:intelligent_meter_app/src/pages/manager/homepage/add/result.dart';
-import 'package:intelligent_meter_app/src/pages/manager/homepage/inbox/complain_inbox.dart';
 import 'package:intelligent_meter_app/src/pages/manager/navigation/bottom_nav.dart';
 import 'package:intelligent_meter_app/src/pages/manager/profile/manager_profile.dart';
 import 'package:intelligent_meter_app/src/pages/manager/homepage/notification/notification.dart';
@@ -30,14 +29,14 @@ class _ManagerState extends State<Manager> {
         appBar: AppBar(
           title: Text(""), // Clear out the default title
           leading: IconButton(
-            icon: Image.asset("assets/icons/Profile_nav.png",
+            icon: Image.asset("assets/icons/Profile_blue.png",
                 width: 25, height: 25),
             onPressed: () => Navigator.push(context,
                 MaterialPageRoute(builder: (context) => ManagerProfile())),
           ),
           actions: [
             IconButton(
-              icon: Image.asset("assets/icons/Bell_black.png",
+              icon: Image.asset("assets/icons/Notification_blue.png",
                   width: 25, height: 25),
               onPressed: () {},
             ),
@@ -62,7 +61,8 @@ class _ManagerState extends State<Manager> {
                               width: 25, height: 25),
                         ),
                         suffixIcon: IconButton(
-                          icon: Text("Cancel", style: TextStyle(fontSize: 15)),
+                          icon: Image.asset("assets/icons/Scanner.png",
+                              width: 25, height: 25),
                           onPressed: () {
                             _searchController.clear();
                           },
@@ -99,7 +99,7 @@ class _ManagerState extends State<Manager> {
               Gap(10),
               Result(),
               Gap(10),
-              ComplainInbox(),
+              
             ],
           )
         ),
