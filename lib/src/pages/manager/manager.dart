@@ -78,8 +78,9 @@ class _ManagerState extends State<Manager> {
             },
           ),
         ),
-        body: Container(
-            width: MediaQuery.of(context).size.width,
+        body: SingleChildScrollView(
+            child: Container( 
+              width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -92,7 +93,7 @@ class _ManagerState extends State<Manager> {
                   child: Text(
                     "Welcome Back, \nKai Min",
                     style: TextStyle(
-                      fontSize: 25,
+                      fontSize: 20,
                       fontWeight: FontWeight.bold,
                       color: Color.fromRGBO(14, 102, 129, 1),
                     ),
@@ -101,25 +102,25 @@ class _ManagerState extends State<Manager> {
                 ),
                 Gap(10),
                 Result(),
-                Gap(15),
+                Gap(10),
                 Padding(
                     padding: EdgeInsets.only(left: 10, right: 10),
                     child: Text("My tasks",
                         style: TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.bold))),
+                            fontSize: 16, fontWeight: FontWeight.bold))),
                 Flexible(
                   child: TasksListManager(),
                 ),
-                Gap(15),
+                Gap(10),
                 Padding(
                     padding: EdgeInsets.only(left: 10, right: 10),
                     child: Text("Order updates",
                         style: TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.bold))),
+                            fontSize: 16, fontWeight: FontWeight.bold))),
                 Flexible(
                   child: Order_Updates(),
                 ),
-                Gap(15),
+                Gap(10),
                 Padding(
                     padding: EdgeInsets.only(left: 10, right: 10),
                     child: Text("Monitor meter movements",
@@ -127,7 +128,7 @@ class _ManagerState extends State<Manager> {
                             fontSize: 18, fontWeight: FontWeight.bold))),
                 Flexible(child: MeterMovement(),)
               ],
-            )),
+            ))),
         bottomNavigationBar: BottomNav(),
       ),
     );
