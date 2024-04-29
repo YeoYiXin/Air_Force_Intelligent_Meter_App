@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:intelligent_meter_app/src/pages/manager/meter_movement/meter_movement.dart';
 
 class MeterMovement extends StatefulWidget {
   const MeterMovement({super.key});
@@ -15,7 +16,6 @@ class _MeterMovementState extends State<MeterMovement> {
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height * 0.4,
         margin: EdgeInsets.only(top: 5, bottom: 10),
-        
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
@@ -23,17 +23,16 @@ class _MeterMovementState extends State<MeterMovement> {
             //first containter
             GestureDetector(
                 onTap: () {
-                  //   Navigator.push(
-                  //     context,
-                  //   MaterialPageRoute(
-                  //     builder: (context) => PlacedOrder())); // change this later
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => MeterMovementPage()));
                 },
                 child: Container(
                     width: MediaQuery.of(context).size.width * 0.4,
                     height: MediaQuery.of(context).size.height * 0.3,
                     decoration: BoxDecoration(
                       color: Colors.white,
-                     
                     ),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
@@ -58,16 +57,18 @@ class _MeterMovementState extends State<MeterMovement> {
                                 color: Color.fromRGBO(14, 102, 129, 1),
                               ),
                               onPressed: () {
-                                // Navigator.push(
-                                // MaterialPageRoute(builder: (context) => PlaceOrder())
-                                //);
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            MeterMovementPage()));
                               },
                             )
                           ],
                         )
                       ],
                     ))),
-                    Gap(20),
+            Gap(20),
             //second container
             GestureDetector(
                 onTap: () {
@@ -81,8 +82,6 @@ class _MeterMovementState extends State<MeterMovement> {
                     height: MediaQuery.of(context).size.height * 0.3,
                     decoration: BoxDecoration(
                       color: Colors.white,
-                     
-                      
                     ),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
@@ -96,11 +95,7 @@ class _MeterMovementState extends State<MeterMovement> {
                           ),
                         ),
                         Gap(23),
-                           Image.asset(
-                                  "assets/images/Meter_Movement.png"),
-                            
-                           
-                         
+                        Image.asset("assets/images/Meter_Movement.png"),
                       ],
                     )))
           ],
