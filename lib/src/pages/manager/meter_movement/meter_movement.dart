@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:intelligent_meter_app/src/pages/manager/meter_movement/dummy_data.dart';
 import 'package:intelligent_meter_app/src/pages/manager/navigation/bottom_nav.dart';
 
@@ -183,7 +184,7 @@ class _MeterMovementState extends State<MeterMovementPage> {
               final tasks = _meterMovement[index];
               return Container(
                   width: MediaQuery.of(context).size.width * 0.8,
-                  height: MediaQuery.of(context).size.height * 0.13,
+                  height: MediaQuery.of(context).size.height * 0.4,
                   margin: EdgeInsets.only(left: 10, bottom: 10, right: 10),
                   padding: EdgeInsets.all(15),
                   decoration: BoxDecoration(
@@ -193,33 +194,219 @@ class _MeterMovementState extends State<MeterMovementPage> {
                     color: Color.fromRGBO(250, 252, 255, 1),
                   ),
                   child: Column(
-                    children: [
-                      Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              tasks.meterName,
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 16,
+                              ),
+                            ),
+                            Container(
+                              padding: EdgeInsets.all(8),
+                              decoration: BoxDecoration(
+                                color: Color.fromRGBO(77, 182, 229, 1),
+                                borderRadius: BorderRadius.circular(5),
+                              ),
+                              child: Text(
+                                tasks.status,
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 14,
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
                         Text(
-                          tasks.meterName,
+                          'Quantity: ${tasks.quantity.toString()}',
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 16,
                           ),
                         ),
-                        Container(
-                          padding: EdgeInsets.all(5),
-                          decoration: BoxDecoration(
-                            color: Color.fromRGBO(14, 102, 129, 1),
-                            borderRadius: BorderRadius.circular(5),
-                          ),
-                          child: Text(
-                            tasks.status,
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 12,
+                        Gap(10),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text("Tracking number"),
+                            Text(
+                              tasks.trackId,
+                              style: TextStyle(
+                                  decoration: TextDecoration.underline),
+                            )
+                          ],
+                        ),
+                        Gap(10),
+                        Stack(
+                          children: [
+                            Row(
+                              children: [
+                                Container(
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.4,
+                                      height: MediaQuery.of(context).size.height * 0.1,
+                                  padding: EdgeInsets.all(10),
+                                  decoration: BoxDecoration(
+                                    border: Border.all(
+                                      color: Color.fromRGBO(14, 102, 129, 1),
+                                      width: 1,
+                                    ),
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        "Transaction from",
+                                        style: TextStyle(
+                                            color: Color.fromRGBO(
+                                                146, 144, 144, 1)),
+                                      ),
+                                      Text(
+                                        tasks.from,
+                                        style: TextStyle(
+                                          color:
+                                              Color.fromRGBO(14, 102, 129, 1),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Gap(20),
+                                Container(
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.4,
+                                       height: MediaQuery.of(context).size.height * 0.1,
+                                  padding: EdgeInsets.all(10),
+                                  decoration: BoxDecoration(
+                                    border: Border.all(
+                                      color: Color.fromRGBO(14, 102, 129, 1),
+                                      width: 1,
+                                    ),
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        "Transaction to",
+                                        style: TextStyle(
+                                            color: Color.fromRGBO(
+                                                146, 144, 144, 1)),
+                                      ),
+                                      Text(
+                                        tasks.to,
+                                        style: TextStyle(
+                                          color:
+                                              Color.fromRGBO(14, 102, 129, 1),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
                             ),
-                          ),
-                        )
-                      ],)
-                    ]
-                  ));
+
+                            //the lorry icon
+                            Center(
+                             
+                                child:Container(
+                                width: 50,
+                                height: 50,
+                                margin: EdgeInsets.only(top: 15, right:20),
+                               
+                                child: Image.asset("assets/icons/Transport.png")
+                              
+                              ),
+                            ),
+                          ],
+                        ),
+
+
+Gap(20),
+
+                        Row(
+                              children: [
+                                Container(
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.4,
+                                      height: MediaQuery.of(context).size.height * 0.1,
+                                  padding: EdgeInsets.all(10),
+                                  decoration: BoxDecoration(
+                                    border: Border.all(
+                                      color: Color.fromRGBO(14, 102, 129, 1),
+                                      width: 1,
+                                    ),
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        "Shipped on",
+                                        style: TextStyle(
+                                            color: Color.fromRGBO(
+                                                146, 144, 144, 1)),
+                                      ),
+                                      Text(
+                                        tasks.shipDate,
+                                        style: TextStyle(
+                                          color:
+                                              Color.fromRGBO(14, 102, 129, 1),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Gap(20),
+                                Container(
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.4,
+                                       height: MediaQuery.of(context).size.height * 0.1,
+                                  padding: EdgeInsets.all(10),
+                                  decoration: BoxDecoration(
+                                    border: Border.all(
+                                      color: Color.fromRGBO(14, 102, 129, 1),
+                                      width: 1,
+                                    ),
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        "Received by",
+                                        style: TextStyle(
+                                            color: Color.fromRGBO(
+                                                146, 144, 144, 1)),
+                                      ),
+                                      Text(
+                                        tasks.arrivalDate,
+                                        style: TextStyle(
+                                          color:
+                                              Color.fromRGBO(14, 102, 129, 1),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            )
+                      ]));
             },
           ))
         ],
