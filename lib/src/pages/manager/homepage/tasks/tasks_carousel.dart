@@ -54,10 +54,10 @@ class TasksListManager extends StatelessWidget {
                           width: MediaQuery.of(context).size.width * 0.4,
                           height: MediaQuery.of(context).size.height * 0.05,
                           decoration: BoxDecoration(
-                            color: Color.fromRGBO(77, 199, 229, 1),
+                            color: Color.fromRGBO(141, 198, 65, 1),
                             borderRadius: BorderRadius.circular(10),
                             border: Border.all(
-                              color: Color.fromRGBO(77, 199, 229, 1),
+                              color: Color.fromRGBO(141, 198, 65, 1),
                             ),
                           ),
                           child: Center(

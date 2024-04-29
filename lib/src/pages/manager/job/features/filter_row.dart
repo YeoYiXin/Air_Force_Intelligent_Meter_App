@@ -18,7 +18,7 @@ class _FilterRowState extends State<FilterRow> {
     return Container(
       margin: EdgeInsets.only(left: 10),
       width: MediaQuery.of(context).size.width,
-      height: 40,
+      height: 30,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: filters.length,

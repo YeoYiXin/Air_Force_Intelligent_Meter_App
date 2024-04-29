@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intelligent_meter_app/src/pages/manager/meter_movement/dummy_data.dart';
 import 'package:intelligent_meter_app/src/pages/manager/navigation/bottom_nav.dart';
 
 class MeterMovementPage extends StatefulWidget {
@@ -11,6 +12,16 @@ class MeterMovementPage extends StatefulWidget {
 class _MeterMovementState extends State<MeterMovementPage> {
   String meterStatus = "Shipping";
   //To ship, shipping, arrived
+  List<MeterMovementArrival> meterMovementArrival = [
+    MeterMovementArrival(
+        meterName: meterName,
+        quantity: quantity,
+        status: status,
+        from: from,
+        to: to,
+        shipDate: shipDate,
+        arrivalDate: arrivalDate)
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -138,6 +149,8 @@ class _MeterMovementState extends State<MeterMovementPage> {
               )
             ],
           ),
+
+          // details
         ],
       ),
       bottomNavigationBar: BottomNav(),

@@ -32,12 +32,12 @@ class _DetailState extends State<Details> {
             Text(
               'Meter Replacement Program',
               textAlign: TextAlign.center,
-              style: TextStyle(color: Colors.white),
+              style: TextStyle(color: Colors.black),
             ),
             Text(
               '01586564',
               textAlign: TextAlign.center,
-              style: TextStyle(color: Colors.white),
+              style: TextStyle(color: Colors.black),
             ),
           ],
         ),
@@ -46,7 +46,7 @@ class _DetailState extends State<Details> {
         leading: IconButton(
           icon: Icon(
             Icons.arrow_back_ios_new_outlined,
-            color: Colors.white,
+            color: Colors.black,
           ),
           onPressed: () => Navigator.pop(context),
         ),
@@ -69,7 +69,7 @@ class _DetailState extends State<Details> {
                         margin: EdgeInsets.all(10),
                         child: Row(children: [
                           Image.asset(
-                            "assets/icons/Home_white.png",
+                            "assets/icons/Home_black.png",
                             width: 20,
                             height: 20,
                           ),
@@ -79,8 +79,8 @@ class _DetailState extends State<Details> {
                                   fontSize: 16,
                                   fontWeight: FontWeight.bold,
                                   decoration: TextDecoration.underline,
-                                  color: Colors.white,
-                                  decorationColor: Colors.white))
+                                  color: Colors.black,
+                                  decorationColor: Colors.black))
                         ]))),
                 Gap(10),
                 // direction
@@ -147,7 +147,7 @@ class _DetailState extends State<Details> {
                             style: TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.bold,
-                              color: Colors.white,
+                              color: Colors.black,
                             )))),
                 Gap(10),
                 Center(

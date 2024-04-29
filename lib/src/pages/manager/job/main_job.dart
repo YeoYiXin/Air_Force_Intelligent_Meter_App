@@ -14,6 +14,8 @@ class JobManager extends StatelessWidget {
       body: Container(
         margin: MediaQuery.of(context).padding,
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Gap(20),
             Center(
@@ -96,7 +98,7 @@ class JobManager extends StatelessWidget {
             ]),
             Gap(10),
             Container(
-              height: MediaQuery.of(context).size.height * 0.05,
+              height: MediaQuery.of(context).size.height * 0.04,
               child: Row(
                 children: [
                   Gap(20),

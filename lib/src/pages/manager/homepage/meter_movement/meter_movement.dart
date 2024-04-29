@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:intelligent_meter_app/src/pages/manager/map/navigation.dart';
 import 'package:intelligent_meter_app/src/pages/manager/meter_movement/meter_movement.dart';
 
 class MeterMovement extends StatefulWidget {
@@ -72,10 +73,10 @@ class _MeterMovementState extends State<MeterMovement> {
             //second container
             GestureDetector(
                 onTap: () {
-                  //   Navigator.push(
-                  //     context,
-                  //   MaterialPageRoute(
-                  //     builder: (context) => PlacedOrder())); // change this later
+                     Navigator.push(
+                       context,
+                     MaterialPageRoute(
+                       builder: (context) => Navigation())); // change this later
                 },
                 child: Container(
                     width: MediaQuery.of(context).size.width * 0.4,

@@ -1,160 +1,172 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:intelligent_meter_app/src/pages/staff/features/homepage/tasksCarousel/dummy_data.dart';
+import 'package:intelligent_meter_app/src/pages/manager/complain/meter_complain.dart';
+import 'package:intelligent_meter_app/src/pages/manager/job/features/dummy_data_contractor.dart';
 import 'package:intelligent_meter_app/src/pages/staff/features/jobs/jobDetail/details.dart';
 
-class TasksInProgress extends StatelessWidget {
+class TasksInProgress extends StatefulWidget {
   const TasksInProgress({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    // dummy data
-    List<Task> tasks = [
-      Task(
-          title: '#1234 Meter Inspection',
-          location: "Jalan Ipoh",
-          date: "Mar 12",
-          status: "In Progress",
-          personInCharge: ["AD", "AD"]),
-      Task(
-          title: '#1234 Meter Inspection',
-          location: "Jalan Ipoh",
-          date: "Mar 12",
-          status: "In Progress",
-          personInCharge: ["AD", "AD"]),
-      Task(
-          title: '#1234 Meter Inspection',
-          location: "Jalan Ipoh",
-          date: "Mar 12",
-          status: "In Progress",
-          personInCharge: ["AD", "AD"])
-    ];
-
-    return Container(
-      width: MediaQuery.of(context).size.width,
-      height: MediaQuery.of(context).size.height * 0.25,
-      color: Color.fromRGBO(247, 249, 255, 1),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(left: 8.0),
-            child: Text('Tasks In Progress',
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
-          ),
-          Flexible(
-            child: ListView.builder(
-              itemCount: tasks.length,
-              scrollDirection: Axis.horizontal,
-              itemBuilder: (context, index) {
-                final task = tasks[index];
-                return GestureDetector(
-                  onTap: () {
-                    // Navigate to Details page on tap
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) =>
-                            Details(),
-                      ),
-                    );
-                  },
-                  child: Container(
-                    width: MediaQuery.of(context).size.width * 0.85,
-                    height: 50,
-                    child: Card(
-                      // Wrap each task with a Card for better UI
-                      margin: const EdgeInsets.all(8.0),
-
-                      // change background colour of the card
-                      color: Color.fromRGBO(255, 255, 255, 1),
-
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Gap(10),
-                            // Title
-                            Text(task.title,
-                                style: TextStyle(fontWeight: FontWeight.bold)),
-
-                            Gap(20),
-
-                            // Location, Date, and Status in a row, each in a box
-                            Wrap(
-                              spacing: 8.0, // Space between boxes
-                              children: [
-                                _buildBlueBox("assets/icons/Location_blue.png",
-                                    task.location),
-                                _buildGreenBox(
-                                    "assets/icons/Date_green.png", task.date),
-                                _buildGreenBox("", task.status),
-                              ],
-                            ),
-
-                            Gap(20),
-
-                            // Person in Charge in a wrap to allow for wrapping if many
-                            Wrap(
-                              spacing: 8.0, // Space between boxes
-                              children: task.personInCharge
-                                  .map((person) => _buildBlueBox(
-                                      "assets/icons/PIC_blue.png", person))
-                                  .toList(),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                );
-              },
-            ),
-          ),
-        ],
-      ),
-    );
-  }
+  State<TasksInProgress> createState() => _TasksInProgressState();
 }
 
-// Utility method to create a box for each piece of data
-Widget _buildBlueBox(String imagePath, String text) => Container(
-      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-      decoration: BoxDecoration(
-        border: Border.all(
-          color: Color.fromRGBO(14, 102, 129, 1), // Border color
-        ),
-        borderRadius: BorderRadius.circular(4), // Rounded corners
-      ),
-      child: Row(
-        mainAxisSize: MainAxisSize.min, // Use min size of Row
-        children: [
-          if (imagePath != "")
-            Image.asset(imagePath, width: 16, height: 16), // Image icon
-          SizedBox(width: 4), // Space between icon and text
-          Text(text, style: TextStyle(color: Color.fromRGBO(14, 102, 129, 1))),
-        ],
-      ),
-    );
-
-// Utility method to create a box for each piece of data
-Widget _buildGreenBox(String imagePath, String text) => Container(
-      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-      decoration: BoxDecoration(
-        border: Border.all(
-          color: Color.fromRGBO(76, 102, 43, 1), // Border color
-        ),
-        borderRadius: BorderRadius.circular(4), // Rounded corners
-      ),
-      child: Row(
-        mainAxisSize: MainAxisSize.min, // Use min size of Row
-        children: [
-          if (imagePath != "")
-            Image.asset(imagePath, width: 16, height: 16), // Image icon
-          SizedBox(width: 4), // Space between icon and text
-          Text(text, style: TextStyle(color: Color.fromRGBO(76, 102, 43, 1))),
-        ],
-      ),
-    );
+class _TasksInProgressState extends State<TasksInProgress> {
+  final List<ContractorDummyData> tasks = [
+    ContractorDummyData(
+      taskId: "01586564",
+      taskName: "Meter inspection",
+      taskDate: "March 30",
+      contractorName: "CH",
+    ),
+    ContractorDummyData(
+      taskId: "01586564",
+      taskName: "Meter inspection",
+      taskDate: "March 17",
+      contractorName: "AD",
+    ),
+    ContractorDummyData(
+      taskId: "0158226564",
+      taskName: "Meter inspection",
+      taskDate: "March 17",
+      contractorName: "AD",
+    ),
+  ];
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height * 0.2,
+        padding: EdgeInsets.all(8),
+        child: ListView.builder(
+          itemCount: tasks.length,
+          scrollDirection: Axis.horizontal,
+          itemBuilder: (context, index) {
+            final task = tasks[index];
+            return Container(
+              width: MediaQuery.of(context).size.width * 0.9,
+              margin: EdgeInsets.only(bottom: 10, right: 10),
+              decoration: BoxDecoration(
+                border: Border.all(
+                  color: Color.fromRGBO(163, 176, 182, 1),
+                  width: 1,
+                ),
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Column(children: [
+                
+                Row(mainAxisAlignment: MainAxisAlignment.start, children: [
+                  Gap(10),
+                  GestureDetector(
+                      onTap: () {
+                        //to complain form
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => Details()));
+                      },
+                      child: Text(
+                        task.taskId,
+                        style: TextStyle(
+                          fontSize: 15,
+                          decoration: TextDecoration.underline,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      )),
+                  Gap(40),
+                  Container(
+                      padding: EdgeInsets.all(5),
+                      decoration: BoxDecoration(
+                        color: Color.fromRGBO(77, 199, 229, 1),
+                        borderRadius: BorderRadius.circular(5),
+                        border: Border.all(
+                          color: Color.fromRGBO(77, 199, 229, 1),
+                        ),
+                      ),
+                      child: Text(
+                        task.taskName,
+                        style: TextStyle(
+                          color: Colors.white,
+                        ),
+                      )),
+                  Gap(40),
+                  IconButton(
+                    icon: Icon(Icons.arrow_forward),
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => Details()));
+                    },
+                  )
+                ]),
+                Row(
+                  children: [
+                    Container(
+                      margin: EdgeInsets.only(left: 10, bottom: 10),
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: Color.fromRGBO(163, 176, 182, 1),
+                          width: 1,
+                        ),
+                        borderRadius: BorderRadius.circular(5),
+                      ),
+                      child: Row(
+                        children: [
+                          IconButton(
+                            icon: Image.asset("assets/icons/Calendar_gray.png",
+                                width: 30, height: 30),
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Details()));
+                            },
+                          ),
+                          Text(
+                            task.taskDate,
+                            style: TextStyle(
+                              color: Color.fromRGBO(163, 176, 182, 1),
+                            ),
+                          ),
+                          Gap(5),
+                        ],
+                      ),
+                    ),
+                    Gap(10),
+                    Container(
+                      padding: EdgeInsets.only(right: 10),
+                      margin: EdgeInsets.only(left: 10, bottom: 10),
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: Color.fromRGBO(163, 176, 182, 1),
+                          width: 1,
+                        ),
+                        borderRadius: BorderRadius.circular(5),
+                      ),
+                      child: Row(
+                        children: [
+                          IconButton(
+                            icon: Image.asset("assets/icons/Profile_grey.png",
+                                width: 30, height: 30),
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Details()));
+                            },
+                          ),
+                          Text(
+                            task.contractorName,
+                            style: TextStyle(
+                              color: Color.fromRGBO(163, 176, 182, 1),
+                            ),
+                          ),
+                          Gap(5),
+                        ],
+                      ),
+                    )
+                  ],
+                )
+              ]),
+            );
+          },
+        ));
+  }
+}
