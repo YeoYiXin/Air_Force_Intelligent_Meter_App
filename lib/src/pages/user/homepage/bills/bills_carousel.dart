@@ -15,12 +15,7 @@ class BillsDueManager extends StatelessWidget {
       billLocation: 'Taman Tun Dr Ismail',
       billAmount: "RM96.5",
       billDate: "May 29st 2024",
-    ),
-    BillsDue(
-      billLocation: 'Sepang',
-      billAmount: "RM 125.6",
-      billDate: "June 10th 2024",
-    ),
+    )
   ];
 
   @override
@@ -47,50 +42,56 @@ class BillsDueManager extends StatelessWidget {
                 ),
                 child: Column(
                   children: [
+                    Container(
+                        width: MediaQuery.of(context).size.width * 0.6,
+                        height: MediaQuery.of(context).size.height * 0.03,
+                        child: Row(
+                            children: [Text(
+                              bill.billLocation,
+                              style: TextStyle(
+                                fontSize: 15,
+                                fontWeight: FontWeight.w400,
+                              ),
+                            ),
+                            ],
+                          ),
+                    ),
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      
                       children: [
                         Container(
-                          width: MediaQuery.of(context).size.width * 0.4,
+                          width: MediaQuery.of(context).size.width * 0.27,
                           height: MediaQuery.of(context).size.height * 0.05,
-                          decoration: BoxDecoration(
-                            color: Color.fromRGBO(77, 199, 229, 1),
-                            borderRadius: BorderRadius.circular(10),
-                            border: Border.all(
-                              color: Color.fromRGBO(77, 199, 229, 1),
-                            ),
-                          ),
                           child: Center(
                             child: Text(
                               bill.billAmount,
                               style: TextStyle(
-                                color: Colors.white,
+                                fontSize: 25,
+                                fontWeight: FontWeight.bold,
+                                color: Color.fromRGBO(14, 102, 129, 1),
                               ),
                             ),
                           ),
                         ),
                         IconButton(
-                          icon: Icon(Icons.arrow_forward,
-                              color: Color.fromRGBO(163, 176, 182, 1)),
+                          icon: Image.asset(
+                          "assets/icons/View.png",
+                          width: 30,
+                          height: 30),
                           onPressed: () {
                             // Perform action here
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => Details()));
+                           // Navigator.push(
+                             //   context,
+                               // MaterialPageRoute(
+                                 //   builder: (context) => Details()));
                           },
                         ),
                       ],
                     ),
-                    Gap(20),
+                    Gap(5),
                     Container(
                         width: MediaQuery.of(context).size.width * 0.7,
-                        decoration: BoxDecoration(
-                            border: Border.all(
-                              color: const Color.fromRGBO(163, 176, 182, 1),
-                              width: 1,
-                            ),
-                            borderRadius: BorderRadius.circular(10)),
                         child: Row(
                           children: [
                             Gap(10),

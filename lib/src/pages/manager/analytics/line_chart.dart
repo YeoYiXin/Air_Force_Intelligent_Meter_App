@@ -92,7 +92,7 @@ class _LineChartForecastState extends State<LineChartForecast> {
       ProphetAlgorithm forecasting = ProphetAlgorithm(
         startDate: startDate,
         endDate: endDate,
-        baseURL: 'http://172.18.5.53:5000',
+        baseURL: 'http://peaceax.pythonanywhere.com',
       );
 
       forecastData = await forecasting.forecastVal();

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:intelligent_meter_app/src/pages/user/homepage/add/complaint.dart';
-import 'package:intelligent_meter_app/src/pages/user/homepage/meter_movement/meter_movement.dart';
-import 'package:intelligent_meter_app/src/pages/user/homepage/order_updates/order_updates.dart';
+import 'package:intelligent_meter_app/src/pages/user/homepage/FAQ/faq.dart';
+import 'package:intelligent_meter_app/src/pages/user/homepage/water_activities/water_activities.dart';
 import 'package:intelligent_meter_app/src/pages/user/homepage/bills/bills_carousel.dart';
 import 'package:intelligent_meter_app/src/pages/user/navigation/bottom_nav.dart';
 import 'package:intelligent_meter_app/src/pages/user/profile/user_profile.dart';
@@ -57,7 +57,8 @@ class _UserState extends State<User> {
             },
           ),
         ),
-        body: Container(
+        body: SingleChildScrollView(
+            child: Container( 
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height,
             child: Column(
@@ -70,7 +71,7 @@ class _UserState extends State<User> {
                   child: Text(
                     "Welcome Back, \nKai Min",
                     style: TextStyle(
-                      fontSize: 25,
+                      fontSize: 20,
                       fontWeight: FontWeight.bold,
                       color: Color.fromRGBO(14, 102, 129, 1),
                     ),
@@ -84,28 +85,28 @@ class _UserState extends State<User> {
                     padding: EdgeInsets.only(left: 10, right: 10),
                     child: Text("Bills due",
                         style: TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.bold))),
+                            fontSize: 16, fontWeight: FontWeight.bold))),
                 Flexible(
                   child: BillsDueManager(),
                 ),
-                Gap(15),
+                Gap(10),
                 Padding(
                     padding: EdgeInsets.only(left: 10, right: 10),
                     child: Text("Upcoming water activities",
                         style: TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.bold))),
+                            fontSize: 16, fontWeight: FontWeight.bold))),
                 Flexible(
-                  child: Order_Updates(),
+                  child: Water_Activities(),
                 ),
-                Gap(15),
+                Gap(10),
                 Padding(
                     padding: EdgeInsets.only(left: 10, right: 10),
                     child: Text("Need Help?",
                         style: TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.bold))),
-                Flexible(child: MeterMovement(),)
+                            fontSize: 16, fontWeight: FontWeight.bold))),
+                Flexible(child: FAQ(),)
               ],
-            )),
+            ))),
         bottomNavigationBar: BottomNav(),
       ),
     );

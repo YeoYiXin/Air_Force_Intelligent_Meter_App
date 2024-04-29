@@ -16,7 +16,7 @@ class ProphetAlgorithm {
       String end = endDate.toIso8601String().substring(0, 10);
 
       var response = await http.post(
-        Uri.parse('$baseURL/get_forecast'),
+        Uri.parse('$baseURL/'),
         body: {'dateStart': start, 'dateEnd': end},
       );
 

@@ -37,11 +37,11 @@ class _ComplaintState extends State<Complaint> {
             // region
             GestureDetector(
               onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) =>
-                            ClaimProcess())); // change this later
+                //Navigator.push(
+                  //  context,
+                    //MaterialPageRoute(
+                      //  builder: (context) =>
+                        //    ClaimProcess())); // change this later
               },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -80,13 +80,13 @@ class _ComplaintState extends State<Complaint> {
               thickness: 1,
             ),
             GestureDetector(
-              onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) =>
-                            LabResult())); // change this later
-              },
+              //onTap: () {
+              //  Navigator.push(
+                //    context,
+                  //  MaterialPageRoute(
+                    //    builder: (context) =>
+                      //      LabResult())); // change this later
+              //},
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.center,
