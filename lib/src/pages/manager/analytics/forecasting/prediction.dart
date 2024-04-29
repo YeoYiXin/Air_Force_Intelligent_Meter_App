@@ -16,31 +16,23 @@ class ProphetAlgorithm {
       String end = endDate.toIso8601String().substring(0, 10);
 
       var response = await http.post(
-        Uri.parse('$baseURL/get_forecast'),
+        Uri.parse('$baseURL/'),
         body: {'dateStart': start, 'dateEnd': end},
       );
 
-      print("Status code $response");
-
       if (response.statusCode == 200) {
-        print("Response body: ${response.body}");
-
         Map<String, dynamic> data = json.decode(response.body);
         // Check if the response contains an error
         if (data.containsKey('error')) {
           throw Exception(data['error']);
         }
         Map<String, double> forecastData = {};
-        print("Data in prediction: $data");
 
         data.forEach((key, value) {
           // Convert the key from DateTime to String
           String dateStr = key.substring(0, 10);
           forecastData[dateStr] = value.toDouble();
-          print("ForecastData in prediction loop: $forecastData");
         });
-
-        print("ForecastData in prediction: $forecastData");
 
         return forecastData;
       } else {
