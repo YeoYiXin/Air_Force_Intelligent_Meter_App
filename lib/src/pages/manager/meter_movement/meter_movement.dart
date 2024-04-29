@@ -14,17 +14,39 @@ class _MeterMovementState extends State<MeterMovementPage> {
   //To ship, shipping, arrived
   List<MeterMovementArrival> meterMovementArrival = [
     MeterMovementArrival(
-        meterName: meterName,
-        quantity: quantity,
-        status: status,
-        from: from,
-        to: to,
-        shipDate: shipDate,
-        arrivalDate: arrivalDate)
+        meterName: "Water Meter 15 MM Plastic",
+        trackId: "xxxxxxx",
+        quantity: 1000,
+        status: "Shipping",
+        from: "Sabak Bernam - Store",
+        to: "Sepang - Store",
+        shipDate: "May 15, 2024",
+        arrivalDate: "May 18-20, 2024"),
+    MeterMovementArrival(
+        meterName: "Water Meter 15 MM Plastic",
+        trackId: "xxxxxxx",
+        quantity: 1000,
+        status: "To ship",
+        from: "Sabak Bernam - Store",
+        to: "Sepang - Store",
+        shipDate: "May 15, 2024",
+        arrivalDate: "May 18-20, 2024"),
+    MeterMovementArrival(
+        meterName: "Water Meter 15 MM Plastic",
+        trackId: "xxxxxxx",
+        quantity: 1000,
+        status: "Arrived",
+        from: "Sabak Bernam - Store",
+        to: "Sepang - Store",
+        shipDate: "May 15, 2024",
+        arrivalDate: "May 18-20, 2024")
   ];
 
   @override
   Widget build(BuildContext context) {
+    List<MeterMovementArrival> _meterMovement = meterMovementArrival
+        .where((element) => element.status == meterStatus)
+        .toList();
     return Scaffold(
       appBar: AppBar(
           title: Text('METER MOVEMENTS'),
@@ -150,7 +172,56 @@ class _MeterMovementState extends State<MeterMovementPage> {
             ],
           ),
 
+          Gap(10),
+
           // details
+          Expanded(
+              child: ListView.builder(
+            itemCount: _meterMovement.length,
+            scrollDirection: Axis.vertical,
+            itemBuilder: (context, index) {
+              final tasks = _meterMovement[index];
+              return Container(
+                  width: MediaQuery.of(context).size.width * 0.8,
+                  height: MediaQuery.of(context).size.height * 0.13,
+                  margin: EdgeInsets.only(left: 10, bottom: 10, right: 10),
+                  padding: EdgeInsets.all(15),
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                        color: Color.fromRGBO(14, 102, 129, 1), width: 1),
+                    borderRadius: BorderRadius.circular(10),
+                    color: Color.fromRGBO(250, 252, 255, 1),
+                  ),
+                  child: Column(
+                    children: [
+                      Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          tasks.meterName,
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16,
+                          ),
+                        ),
+                        Container(
+                          padding: EdgeInsets.all(5),
+                          decoration: BoxDecoration(
+                            color: Color.fromRGBO(14, 102, 129, 1),
+                            borderRadius: BorderRadius.circular(5),
+                          ),
+                          child: Text(
+                            tasks.status,
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 12,
+                            ),
+                          ),
+                        )
+                      ],)
+                    ]
+                  ));
+            },
+          ))
         ],
       ),
       bottomNavigationBar: BottomNav(),
