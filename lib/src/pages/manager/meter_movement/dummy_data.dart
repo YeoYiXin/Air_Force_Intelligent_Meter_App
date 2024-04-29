@@ -1,5 +1,6 @@
 class MeterMovementArrival {
   final String meterName;
+  final String trackId;
   final int quantity;
   final String status;
   final String from;
@@ -9,6 +10,7 @@ class MeterMovementArrival {
 
   MeterMovementArrival(
       {required this.meterName,
+      required this.trackId,
       required this.quantity,
       required this.status,
       required this.from,

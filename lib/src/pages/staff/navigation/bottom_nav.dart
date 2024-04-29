@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:intelligent_meter_app/src/pages/staff/features/location/location.dart';
+import 'package:intelligent_meter_app/src/pages/manager/map/navigation.dart';
 import 'package:intelligent_meter_app/src/pages/staff/features/profilePage/user_profile.dart';
 import 'package:intelligent_meter_app/src/pages/staff/staff.dart';
 
@@ -59,7 +59,7 @@ class _BottomNavState extends State<BottomNav> {
           case 1:
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => Location()),
+              MaterialPageRoute(builder: (context) => Navigation()),
             );
             break;
           case 2:
